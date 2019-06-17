@@ -51,6 +51,12 @@ class HomePageStete extends State<HomePage> {
     });
   }
 
+  void _IconButtonAction(){
+    setState(() {
+      isTouchRaisedButton = !isTouchRaisedButton;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
@@ -86,7 +92,13 @@ class HomePageStete extends State<HomePage> {
             ),
             onPressed: _OutlineButtonAction,
             highlightedBorderColor: Colors.red,
-          )
+          ),
+
+          IconButton(
+            icon: Icon(Icons.today),
+            onPressed: _IconButtonAction,
+            highlightColor: Colors.red,
+          ),
 
           ],
         ),
