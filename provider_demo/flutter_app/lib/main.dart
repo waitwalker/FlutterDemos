@@ -1,6 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/model_one.dart';
+import 'package:flutter_app/model_two.dart';
+import 'package:provider/provider.dart';
 
-void main() => runApp(MyApp());
+void main() {
+  
+  runApp(
+    MultiProvider(
+      providers: [
+        Provider<ModelOne>(create: (_)=>ModelOne()),
+        Provider<ModelTwo>(create: (_)=>ModelTwo()),
+        ],
+      child: MyApp(),
+    )
+  );
+}
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
