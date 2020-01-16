@@ -41,6 +41,7 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
 
+
   void _incrementCounter() {
     setState(() {
       _counter++;
@@ -49,9 +50,12 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    ModelOne modelOne = Provider.of<ModelOne>(context);
+    return ChangeNotifierProvider(
+      create: (_)=>ModelOne(),
+      child: Scaffold(
       appBar: AppBar(
-        title: Text(widget.title),
+        title: Text("${modelOne.value}"),
       ),
       body: Center(
         // Center is a layout widget. It takes a single child and positions it
@@ -70,10 +74,13 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
+        onPressed: (){
+          modelOne.increment();
+        },
         tooltip: 'Increment',
         child: Icon(Icons.add),
       ), // This trailing comma makes auto-formatting nicer for build methods.
+    ),
     );
   }
 }
