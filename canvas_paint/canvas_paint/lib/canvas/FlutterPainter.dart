@@ -6,9 +6,9 @@ class FlutterPainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
     var paint = Paint()
-        ..strokeWidth = 2.0
+        ..strokeWidth = 25.0
         ..color = Colors.red;
-    canvas.drawLine(Offset(100, 100), Offset(200, 300), paint);
+    canvas.drawLine(Offset(95, 0), Offset(95, 300), paint);
   }
 
   @override

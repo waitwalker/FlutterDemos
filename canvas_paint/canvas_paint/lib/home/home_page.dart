@@ -18,8 +18,15 @@ class _HomeState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: CustomPaint(
-        painter: FlutterPainter(),
+      body: Center(
+        child: CustomPaint(
+          foregroundPainter: FlutterPainter(),
+          child: Container(
+            width: 200,
+            height: 200,
+            color: Color(0x5a00C800),
+          ),
+        ),
       ),
     );
   }
