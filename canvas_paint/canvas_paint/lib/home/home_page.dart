@@ -1,8 +1,9 @@
+import 'package:canvas_paint/canvas/FlutterPainter.dart';
 import 'package:flutter/material.dart';
 
 ///
 /// @ClassName HomePage
-/// @Description 
+/// @Description
 /// @Author waitwalker
 /// @Date 2020-03-07
 ///
@@ -16,7 +17,10 @@ class HomePage extends StatefulWidget {
 class _HomeState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
-    return null;
+    return Scaffold(
+      body: CustomPaint(
+        painter: FlutterPainter(),
+      ),
+    );
   }
 }
