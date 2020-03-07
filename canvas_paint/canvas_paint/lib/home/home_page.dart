@@ -15,17 +15,32 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomeState extends State<HomePage> {
+  List<Frame> frames = [Frame([])];
+  int currentFrame = 0;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: CustomPaint(
-          foregroundPainter: FlutterPainter(),
-          child: Container(
-            width: 200,
-            height: 200,
-            color: Color(0x5a00C800),
-          ),
+      body: CustomPaint(
+        painter: FlutterPainter(
+            frames:frames
+        ),
+        child: GestureDetector(
+          onPanStart: (details){
+            /// 开始绘制 可以初始化一些配置
+          },
+          onPanUpdate: (details){
+            /// 拖动更新
+            RenderBox renderBox = context.findRenderObject();
+            Offset currentPoint = renderBox.globalToLocal(details.globalPosition);
+            setState(() {
+              frames[currentFrame].points.add(currentPoint);
+            });
+          },
+          onPanEnd: (details){
+            frames.add(Frame([]));
+            currentFrame++;
+          },
         ),
       ),
     );
