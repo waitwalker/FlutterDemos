@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:random_color/random_color.dart';
 
 ///
 /// @ClassName FlutterPainter
@@ -14,17 +13,16 @@ class FlutterPainter extends CustomPainter {
 
   /// 初始化画笔
   var lineP = Paint()
-    ..strokeWidth = 25.0
-    ..color = Colors.red;
+    ..strokeWidth = 5.0
+    ..strokeCap = StrokeCap.round;
 
   @override
   void paint(Canvas canvas, Size size) {
 
     if (frames.length == 0) return;
 
-    Color _randomColor = RandomColor().randomColor();
     for(int i = 0; i < frames.length; i++ ){
-      lineP..color = _randomColor;
+      lineP..color = frames[i].color;
       /// 当前frame 点集合
       List<Offset> currentPoints = frames[i].points;
       if (currentPoints == null || currentPoints.length == 0) return;
@@ -53,5 +51,6 @@ class FlutterPainter extends CustomPainter {
 class Frame {
   /// 绘制的点集合
   List<Offset> points;
-  Frame(this.points);
+  Color color;
+  Frame(this.points,this.color);
 }
