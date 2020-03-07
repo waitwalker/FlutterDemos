@@ -5,12 +5,14 @@ class FlutterPainter extends CustomPainter {
 
   @override
   void paint(Canvas canvas, Size size) {
-    // TODO: implement paint
+    var paint = Paint()
+        ..strokeWidth = 2.0
+        ..color = Colors.red;
+    canvas.drawLine(Offset(100, 100), Offset(200, 300), paint);
   }
 
   @override
   bool shouldRepaint(CustomPainter oldDelegate) {
-    // TODO: implement shouldRepaint
-    return null;
+    return true;
   }
 }
