@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:permission_handler/permission_handler.dart';
 
 void main() => runApp(MyApp());
 
@@ -47,14 +48,27 @@ class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
 
   void _incrementCounter() {
-    setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-      _counter++;
-    });
+    requestPermission();
+  }
+  Future requestPermission() async {
+
+    /// 申请权限
+    Map<PermissionGroup, PermissionStatus> permissions = await PermissionHandler().requestPermissions([PermissionGroup.camera]);
+
+    /// 申请结果
+    PermissionStatus permission = await PermissionHandler().checkPermissionStatus(PermissionGroup.camera);
+
+    if (permission == PermissionStatus.granted) {
+      print("权限申请通过");
+
+      //Fluttertoast.showToast(msg: "权限申请通过");
+
+    } else {
+      print("权限申请被拒绝");
+      //Fluttertoast.showToast(msg: "权限申请被拒绝");
+
+    }
+
   }
 
   @override
