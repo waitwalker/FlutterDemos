@@ -27,7 +27,7 @@ class _ScaleAnimationState extends State<ScaleAnimationPage> with TickerProvider
     animationController.addListener(() {
       // 动画更新时会调用
       //
-
+      print("value :${animation.value}");
       setState(() {
 
       });
@@ -35,6 +35,30 @@ class _ScaleAnimationState extends State<ScaleAnimationPage> with TickerProvider
 
     // 开始执行动画
     animationController.forward();
+
+    animation.addStatusListener((status) {
+      print("animation current status:$status");
+      switch (status) {
+        case AnimationStatus.dismissed:
+          print("dismissed");
+          break;
+        case AnimationStatus.forward:
+          print("forward");
+          break;
+        case AnimationStatus.reverse:
+          print("reverse");
+          break;
+        case AnimationStatus.completed:
+          print("completed");
+          break;
+      }
+
+      if (status == AnimationStatus.completed) {
+        animationController.reverse();
+      } else if (status == AnimationStatus.dismissed) {
+        animationController.forward();
+      }
+    });
 
     super.initState();
   }
@@ -55,5 +79,11 @@ class _ScaleAnimationState extends State<ScaleAnimationPage> with TickerProvider
         ),
       ),
     );
+  }
+
+  @override
+  void dispose() {
+    animationController.dispose();
+    super.dispose();
   }
 }
