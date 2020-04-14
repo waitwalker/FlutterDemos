@@ -1,10 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-void main() {
+import 'dart:async';
+void main() async{
   WidgetsFlutterBinding.ensureInitialized();
   setOrientation();
-  runApp(MyApp());
+  runZoned(() => runApp(App()),
+    onError: (Object obj, StackTrace stack) {
+
+    },
+  );
 }
 
 Future<bool> setOrientation() async {
@@ -19,8 +24,24 @@ Future<bool> setOrientation() async {
   return result;
 }
 
-class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
+class App extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() {
+    return _AppState();
+  }
+}
+
+class _AppState extends State<StatefulWidget> {
+
+  @override
+  void initState() {
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.landscapeRight
+    ]);
+    setOrientation();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -67,7 +88,23 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
 
+  Future<bool> setOrientationP() async {
+    MethodChannel orientationChannel = const MethodChannel("com.etiantian/orientation");
+    var result;
+    try {
+      result = await orientationChannel.invokeMethod("setPortrait");
+      print("切换横竖屏结果:$result");
+    } on PlatformException catch (e) {
+      print("切换横竖屏:${e.toString()}");
+    }
+    return result;
+  }
+
   void _incrementCounter() {
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp
+    ]);
+    setOrientationP();
     setState(() {
       // This call to setState tells the Flutter framework that something has
       // changed in this State, which causes it to rerun the build method below
