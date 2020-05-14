@@ -3,6 +3,7 @@ import 'dart:typed_data';
 import 'package:flutter/material.dart';
 import 'package:archive/archive.dart';
 import 'package:archive/archive_io.dart';
+import 'package:flutterarchivedemo/file_page.dart';
 import 'package:open_file/open_file.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:http/http.dart' as http;
@@ -40,21 +41,25 @@ class _MyHomePageState extends State<MyHomePage> {
   String path;
   String _uri = "https://attach.etiantian.com/security/3b657eea12f03fedf7f01b52370479d2/5ebb9c53/ett20/resource/0a32b838821a8c99c987aa3d57623dbf/1560586789993.pdf";
   void _incrementCounter() {
-    decoderFile();
-    //readFile();
+    //decoderFile();
+    readFile();
   }
 
   readFile() async {
     final root = Platform.isAndroid
         ? await getExternalStorageDirectory()
         : await getApplicationDocumentsDirectory();
-    final directory = Directory(root.path + "/files");
+    final directory = Directory(root.path + "/file/archive-master");
 
     print("directory: $directory");
 
     final files = directory.listSync();
-
+    Navigator.push(context, MaterialPageRoute(builder: (BuildContext context){
+      return FilePage(files,title: "archive-master",);
+    }));
+    return;
     for (FileSystemEntity file in files) {
+      print("file last path:${file.path.split("/").last}");
       print("file:$file");
       bool isDir = file is Directory;
       print("isDir:$isDir");
