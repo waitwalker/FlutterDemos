@@ -41,16 +41,6 @@ class MyApp extends StatelessWidget {
 
 class MyHomePage extends StatefulWidget {
   MyHomePage({Key key, this.title}) : super(key: key);
-
-  // This widget is the home page of your application. It is stateful, meaning
-  // that it has a State object (defined below) that contains fields that affect
-  // how it looks.
-
-  // This class is the configuration for the state. It holds the values (in this
-  // case the title) provided by the parent (in this case the App widget) and
-  // used by the build method of the State. Fields in a Widget subclass are
-  // always marked "final".
-
   final String title;
 
   @override
@@ -66,20 +56,30 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   readFile() async {
-//    final file = File("lib/test.zip");
-//    final exist = await file.exists();
-//    print("$exist");
+    final root = Platform.isAndroid
+        ? await getExternalStorageDirectory()
+        : await getApplicationDocumentsDirectory();
+    final directory = Directory(root.path + "/file");
 
-//    final filePath = "lib/test.zip";
-//    final result = await OpenFile.open(filePath);
-//    print("$result");
-  
-    //loadFile(_uri);
-//    final file = await _localFile;
-//    final exist = await file.exists();
-//    print("file exist:$exist");
+    print("directory: $directory");
 
-//    var encoder = ZipFileEncoder();
+    final files = directory.listSync();
+
+    for (FileSystemEntity file in files) {
+      print("file:$file");
+      bool isDir = file is Directory;
+      print("isDir:$isDir");
+      final exi = await file.exists();
+      print("exi:$exi");
+    }
+
+
+    print("files: $files");
+
+  }
+
+  // 解压缩文件成功
+  decoderFile() async {
     final directory = Platform.isAndroid
         ? await getExternalStorageDirectory()
         : await getApplicationDocumentsDirectory();
@@ -90,17 +90,10 @@ class _MyHomePageState extends State<MyHomePage> {
 
     print("exist: $exist");
 
-//
-//    var dir = Directory(directory.path + '/file');
-//    //encoder.zipDirectory(dir, filename: 'out.zip');
-//    encoder.addFile(file);
-//    encoder.close();
-
     final bytes = file.readAsBytesSync();
     final archive = ZipDecoder().decodeBytes(bytes);
     
     print("$archive");
-
     // Extract the contents of the Zip archive to disk.
     for (final file in archive) {
       final filename = file.name;
