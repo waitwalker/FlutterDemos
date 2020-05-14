@@ -9,6 +9,8 @@ import 'package:path_provider/path_provider.dart';
 import 'package:http/http.dart' as http;
 //import 'package:path_provider/path_provider.dart';
 
+// 文件操作借鉴文档
+// https://juejin.im/post/5d2587a251882557bd7ce58a
 void main() {
   runApp(MyApp());
 }
