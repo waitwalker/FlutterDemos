@@ -29,7 +29,7 @@ class _HomeState extends State<HomePage> with SingleTickerProviderStateMixin{
 
 
 
-    // 监听动画状态变化
+    // 监听动画value变化
     animationController.addListener(() {
 
       print("animation controller value:${animationController.value}");
@@ -38,6 +38,16 @@ class _HomeState extends State<HomePage> with SingleTickerProviderStateMixin{
       setState(() {
 
       });
+    });
+
+    // 监听动画执行的状态
+    animationController.addStatusListener((status) {
+      print("animation status:$status");
+      if (status == AnimationStatus.completed) {
+        animationController.reverse();
+      } else if (status == AnimationStatus.dismissed) {
+        animationController.forward();
+      }
     });
 
     super.initState();
