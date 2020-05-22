@@ -22,10 +22,10 @@ class _HomeState extends State<HomePage> with SingleTickerProviderStateMixin{
     animationController = AnimationController(vsync: this, duration: Duration(milliseconds: 1000));
     // 插值器 关联一个animationController,主要返回当前的需要的value
 
-    final curve = CurvedAnimation(parent: animationController, curve: Curves.bounceIn);
+    final curve = CurvedAnimation(parent: animationController, curve: Curves.easeInOutCirc);
 
     // Tween
-    animation = Tween(begin: 50.0, end: 100.0).animate(animationController);
+    animation = Tween(begin: 50.0, end: 100.0).animate(curve);
 
 
 
