@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="FullBleedTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- API 19 theme customizations can go here. -->
+        <item name="android:windowTranslucentStatus">true</item>
+        <item name="android:windowTranslucentNavigation">false</item>
+        <item name="android:textCursorDrawable">@null</item>
+    </style>
+</resources>

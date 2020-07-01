@@ -1,0 +1,8 @@
+<resources>
+
+    <style name="Activity_Transparent" parent="@style/FullBleedTheme">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowIsTranslucent">true</item>
+    </style>
+</resources>

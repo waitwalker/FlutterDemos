@@ -1,0 +1,200 @@
+name: online_school
+description: online_school flutter
+
+version: 1.3.6+26
+
+
+environment:
+  sdk: ">=2.2.2 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^0.1.2
+
+  # 系统分享插件
+  share_extend: ^1.1.0
+
+  font_awesome_flutter: ^8.0.1
+  rxdart: ^0.21.0
+  flutter_masked_text: ^0.6.0
+  webview_flutter: ^0.3.5+2
+  tripledes: ^2.1.0
+  json_annotation: ^2.0.0
+  dio: ^3.0.9
+  shared_preferences: ^0.4.3
+  sqflite: any
+  path_provider: ^1.3.0
+  flare_flutter: ^1.3.3
+  image: ^2.1.4
+  # fluwx: ^0.6.1
+  # flutter_alipay: "^0.1.0"
+  # recorder_wav: ^0.1.0
+  camera: ^0.5.7+2
+  fluttertoast: ^3.0.3
+
+  # 图片压缩
+  flutter_image_compress: ^0.6.8
+  flutter_native_image: ^0.0.5+2
+
+  # 获取图片 size(width & height)
+  image_size_getter: ^0.1.0
+
+  logging: ^0.11.3+2
+  # intl: ^0.16.0
+  url_launcher: ^5.0.2
+  connectivity: ^0.4.2
+  encrypt: ^0.2.0+2
+  video_player: ^0.10.0+4
+  oauth2: ^1.2.3
+  flutter_redux: ^0.5.3
+  event_bus:  ^1.0.1
+  scoped_model: ^1.0.1
+  flutter_spinkit: ^3.1.0
+  lottie_flutter: ^0.2.0
+  flutter_easyrefresh: ^1.2.7
+  image_picker: ^0.6.3+4
+  # image_crop: ^0.3.0
+  image_cropper: ^1.0.2
+  #flutter_datetime_picker: ^1.1.5
+  flutter_datetime_picker:
+    git:
+      url: https://github.com/waitwalker/flutter_datetime_picker.git
+  flutter_downloader: 1.4.4
+  permission_handler: ^4.0.0
+  package_info: ^0.4.0+2
+  flutter_rating: ^0.0.2
+  device_info: ^0.4.0+1
+  # timeline_list: ^0.0.3
+  # percent_indicator: ^1.0.15
+  flutter_localizations:
+    sdk: flutter
+  intl_translation: ^0.17.4
+  shimmer: ^1.0.0
+  quiver: ^2.0.3
+  equatable: ^0.2.0
+  image_picker_saver: ^0.3.0
+  udid: ^0.0.2
+  screen: ^0.0.5
+  path_drawing: ^0.4.1
+  flutter_svg: ^0.17.3+1
+  date_format: ^1.0.8
+  pdf_viewer_plugin: ^1.0.0+2
+  table_calendar: ^2.0.1
+  paging: ^0.1.0
+  photo_view: ^0.8.0
+  http: ^0.12.0+4
+
+  # 转场动画
+  page_transition: ^1.1.5
+
+  # 刷新
+  pull_to_refresh: ^1.5.7
+
+  open_file: ^3.0.1
+
+  # ********************* common app ***********************
+  # 生成二维码
+  qr_flutter: ^3.2.0
+
+  # 列表左划右划删除
+  flutter_slidable: ^0.5.4
+
+  # 加密解密
+  cryptography: ^1.4.0
+
+  # 角标
+  badges: ^1.1.1
+
+  # 3D transition效果
+  cube_transition: ^1.0.2
+
+  # 图片多选
+  multi_image_picker: ^4.6.7
+
+  # 原点边框
+  dotted_border: ^1.0.5
+
+  # 获取点击位置
+  positioned_tap_detector: ^1.0.3
+
+  # 获取通知权限
+  notification_permissions: ^0.4.4
+
+  # 图片处理 缓存&错误&占位等功能
+  octo_image: ^0.2.1
+  cached_network_image: ^2.0.0
+
+  # 屏幕长亮 不息屏
+  wakelock: ^0.1.4+1
+
+  # ********************* common app ***********************
+
+  # 电池
+  #battery: ^1.0.1
+
+  # 日志信息输出
+  logger: ^0.8.3
+
+    # 下拉刷新 上拉加载更多插件
+    #pull_to_refresh:
+    #git:
+  #url: https://github.com/waitwalker/flutter_pulltorefresh.git
+  #ref: 'master'
+
+  # 播放器
+  #chewie: ^0.9.10
+  chewie:
+    git:
+      url: https://github.com/waitwalker/chewie.git
+      ref: 'master'
+  jpush_flutter:
+    git:
+      url: https://github.com/waitwalker/jpush-flutter-plugin.git
+      ref: 'master'
+  wangxiao_plugin:
+    path: ./wangxiao_plugin
+  flutter_webview_plugin:
+    git:
+      url: https://github.com/waitwalker/flutter_webview_plugin.git
+      ref: 'master'
+  flutter_umeng_analytics:
+    git:
+      url: https://github.com/waitwalker/flutter_umeng_analytics.git
+      ref: 'master'
+
+  real_rich_text:
+    git:
+      url: https://github.com/waitwalker/RealRichText.git
+      ref: 'master'
+
+dependency_overrides:
+  video_player:
+    path: ./video_player
+  path_drawing: ^0.4.1
+
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  build_runner: ^1.0.0
+  json_serializable: ^2.0.0
+  json2entity: ^1.0.8
+
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - static/images/1.5x/
+    - static/images/2.0x/
+    - static/images/3.0x/
+    - static/images/
+    - static/svgs/
+    - assets/
+
+  fonts:
+    - family: aliIconFont
+      fonts:
+        - asset: static/font/iconfont.ttf
+

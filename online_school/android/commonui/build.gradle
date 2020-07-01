@@ -1,0 +1,55 @@
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    defaultConfig {
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        versionCode rootProject.ext.versionCode
+        versionName rootProject.ext.versionName
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "proguard-rules.pro"
+    }
+    buildTypes {
+        release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        qatest {
+        }
+    }
+    lintOptions {
+        checkReleaseBuilds false
+        // Or, if you prefer, you can continue to check for errors in release builds,
+        // but continue the build even when errors are found:
+        abortOnError false
+    }
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation 'androidx.appcompat:appcompat:1.0.0'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test:runner:1.1.0'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0'
+    api 'com.google.android.material:material:1.0.0'
+    api ('com.easefun.polyv:polyvSDKCloudClass:0.13.1'){
+        exclude group:'com.github.bumptech.glide',module:'glide'
+        exclude group:'com.github.bumptech.glide',module:'gifdecoder'
+        exclude group:'com.squareup.okhttp',module:'okhttp'
+        exclude module: "okio"
+    }
+    //glide
+    api ('jp.wasabeef:glide-transformations:3.3.0'){
+//        exclude group:'com.github.bumptech.glide',module:'glide'
+    }
+    api ("com.github.bumptech.glide:okhttp3-integration:4.7.1"){
+//        exclude group:'com.github.bumptech.glide',module:'glide'
+    }
+    //1、排除polyvSDKCloudClass的Glide依赖，其中polyvSDKCloudClass版本按下载的版本
+    //2、添加Glide依赖4.10.0
+    api 'com.github.bumptech.glide:glide:4.10.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.10.0'
+    //3、注释原来的注解
+    //annotationProcessor 'com.github.bumptech.glide:compiler:4.7.1'
+}

@@ -1,0 +1,198 @@
+def localProperties = new Properties()
+def localPropertiesFile = rootProject.file('local.properties')
+if (localPropertiesFile.exists()) {
+    localPropertiesFile.withReader('UTF-8') { reader ->
+        localProperties.load(reader)
+    }
+}
+
+def flutterRoot = localProperties.getProperty('flutter.sdk')
+if (flutterRoot == null) {
+    throw new GradleException("Flutter SDK not found. Define location with flutter.sdk in the local.properties file.")
+}
+
+def flutterVersionCode = localProperties.getProperty('flutter.versionCode')
+if (flutterVersionCode == null) {
+    flutterVersionCode = '1'
+}
+
+def flutterVersionName = localProperties.getProperty('flutter.versionName')
+if (flutterVersionName == null) {
+    flutterVersionName = '1.0'
+}
+
+apply plugin: 'com.android.application'
+apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
+
+android {
+    compileSdkVersion 28
+
+    lintOptions {
+        disable 'InvalidPackage'
+        abortOnError false
+        checkReleaseBuilds false
+    }
+
+    defaultConfig {
+        // 极光推送配置 1
+        applicationId "com.etiantian.online.wangxiao"
+        minSdkVersion 21
+        targetSdkVersion 27
+        multiDexEnabled true
+        versionCode flutterVersionCode.toInteger()
+        versionName flutterVersionName
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    signingConfigs {
+        release {
+            storeFile file(STORE_FILE)
+            storePassword STORE_PASSWORD
+            keyAlias KEY_ALIAS
+            keyPassword KEY_PASSWORD
+            v2SigningEnabled true
+        }
+        debug {
+
+        }
+    }
+
+    buildTypes {
+        debug {
+            signingConfig signingConfigs.release
+        }
+        release {
+            minifyEnabled true
+            zipAlignEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-project.txt'
+            signingConfig signingConfigs.release
+        }
+    }
+    defaultConfig {
+        // 极光推送配置 2
+        ndk { abiFilters 'armeabi-v7a','armeabi','arm64-v8a'}
+
+        // 如果需要调试模拟器 把上面注释 下面打开
+        //ndk { abiFilters 'armeabi-v7a','armeabi','arm64-v8a', 'x86', 'x86_64'}
+
+        // 极光推送配置 3
+        manifestPlaceholders = [
+                JPUSH_PKGNAME: "com.etiantian.online.wangxiao",
+                JPUSH_APPKEY : "b0efe61a28a3d5ecb5ee1f22",
+                JPUSH_CHANNEL: "dev",
+        ]
+    }
+
+    flavorDimensions 'channel'
+    productFlavors {
+        develop {
+            dimension 'channel'
+        }
+    }
+
+
+    channels()
+    //gradle clean build distZip upload -Pchannel --daemon --parallel --offline
+    variantFilter { variant ->
+        // release/debug
+        def buildType = variant.buildType.name
+        // flavor
+        def flavorName = variant.getFlavors().get(0).name
+        def variantName = flavorName + ((String) buildType.charAt(0)).toUpperCase() + buildType.subSequence(1, buildType.length())
+        flavors = variant.getFlavors()
+        variant.setIgnore(true)
+
+        // 根据构建类型和定制产品，自动过滤发布类型和渠道
+
+        //channel+release
+        if (project.hasProperty("channel")) {
+            if (!"release".equals(buildType)) {// channel只要release
+                variant.setIgnore(true)
+            } else {
+                for (f in flavors) {
+                    if ('develop'.equals(f.name)) {
+                        variant.setIgnore(true)
+                        break
+                    }
+                    println("${flavorName}----> ${buildType}")
+                    variant.setIgnore(false)
+                }
+            }
+        } else if (project.hasProperty("production")) {
+            // noop, all apk
+            variant.setIgnore(false)
+        } else {
+            if (flavorName.equals("develop")) {
+                variant.setIgnore(false)
+            }
+        }
+    }
+
+    //替换全部产品渠道设置
+    productFlavors.all {
+        flavor -> flavor.manifestPlaceholders = [channel_code: name]
+    }
+
+    packagingOptions {
+        doNotStrip '*/mips/*.so'
+    }
+}
+
+// 多渠道打包
+def channels() {
+    if (project.hasProperty("channel")) {
+
+        android.flavorDimensions('channel')
+        if (!"".equals(channel)) {
+            createFlavor(channel)
+        } else {
+            // 渠道名称文件路径
+            def path = "./build_config/channels.txt"
+            file(path).eachLine { line ->
+                if (!line.trim().startsWith("//")) { //剔除注释行
+                    createFlavor(line)
+                }
+            }
+        }
+    }
+}
+
+private void createFlavor(String line) {
+    println "************ channels *******************" + line;
+    android.productFlavors.create(line, {
+
+        dimension 'channel'
+//        applicationIdSuffix ".$name"
+        resValue "string", "appId", getAppIdByChannel(name)
+        proguardFiles android.getDefaultProguardFile('proguard-android.txt'), 'proguard-project.txt'
+        signingConfig android.signingConfigs.release
+    })
+}
+
+private String getAppIdByChannel(String channel) {
+    switch (channel) {
+        case 'lyzx':
+            return '701';
+            break;
+        default:
+            return -1;
+    }
+}
+//获得git版本
+def getGitVersion() {
+    return 'git rev-parse --short HEAD'.execute().text.trim()
+}
+
+flutter {
+    source '../..'
+}
+
+dependencies {
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test:runner:1.1.2-alpha01'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.2-alpha01'
+    implementation "com.mcxiaoke.packer-ng:helper:$packer_version"
+    implementation 'com.android.support:multidex:1.0.3'
+    implementation files('libs/pc-utils-simple-1.0.jar')
+    implementation project(':polyvapp')
+}
