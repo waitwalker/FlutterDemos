@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="20px" height="20px" viewBox="0 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.5 (67469) - http://www.bohemiancoding.com/sketch -->
+    <title>锁</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <rect id="path-1" x="16" y="525" width="328" height="432"></rect>
+        <filter x="-4.9%" y="-3.2%" width="109.8%" height="107.4%" filterUnits="objectBoundingBox" id="filter-2">
+            <feOffset dx="0" dy="2" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="5" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0.698039216   0 0 0 0 0.756862745   0 0 0 0 0.850980392  0 0 0 1 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="活动课/详情" transform="translate(-308.000000, -549.000000)">
+            <rect fill="#F2F7FF" x="0" y="0" width="360" height="1078"></rect>
+            <g id="矩形" fill-rule="nonzero">
+                <use fill="black" fill-opacity="1" filter="url(#filter-2)" xlink:href="#path-1"></use>
+                <use fill="#FFFFFF" xlink:href="#path-1"></use>
+            </g>
+            <g id="分组-4" transform="translate(16.000000, 541.000000)">
+                <rect id="矩形" fill-rule="nonzero" x="0" y="0" width="328" height="60"></rect>
+                <g id="锁" transform="translate(292.000000, 8.000000)">
+                    <g id="分组">
+                        <rect id="矩形" fill="#000000" opacity="0" x="0" y="0" width="20" height="20"></rect>
+                        <path d="M16.4289111,8.3516 L15.0106889,8.3516 L15.0106889,5.03984444 C15.0106889,2.26495556 12.7638889,0.0098 9.99984444,0.0098 C7.23602222,0.0098 4.98677778,2.26495556 4.98677778,5.03984444 L4.98677778,8.3516 L3.56966667,8.3516 C2.88602222,8.3516 2.33217778,8.90773333 2.33217778,9.59402222 L2.33217778,18.6631333 C2.33217778,19.3503778 2.88602222,19.9067111 3.56966667,19.9067111 L16.4302222,19.9067111 C17.1138667,19.9067111 17.6677778,19.3503778 17.6677778,18.6631556 L17.6677778,9.594 C17.6677778,8.90771111 17.1138889,8.35155556 16.4289111,8.35155556 L16.4289111,8.3516 Z M10.6946889,14.3652444 L10.6946889,16.3448889 C10.6946889,16.4335556 10.6216667,16.5088222 10.533,16.5088222 L9.46811111,16.5088222 C9.37811111,16.5088222 9.30531111,16.4335556 9.30531111,16.3448889 L9.30531111,14.3652444 C8.80502222,14.1079111 8.45884444,13.5942444 8.45884444,12.9919111 C8.45884444,12.1380667 9.14984444,11.4446222 9.99986667,11.4446222 C10.8501333,11.4446222 11.5398444,12.1380667 11.5398444,12.9918889 C11.5422222,13.5942444 11.1949556,14.1079111 10.6946667,14.3652222 L10.6946889,14.3652444 Z M13.0869111,8.3516 L6.91288889,8.3516 L6.91288889,5.12126667 C6.91288889,3.4126 8.2998,2.02211111 10.0012,2.02211111 C11.7037333,2.02211111 13.0868667,3.4126 13.0868667,5.12126667 L13.0869111,8.3516 Z" id="形状" fill="#F8B739" fill-rule="nonzero" opacity="0.3"></path>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

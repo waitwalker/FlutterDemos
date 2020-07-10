@@ -1,0 +1,106 @@
+apply plugin: 'maven'
+apply plugin: 'signing'
+apply plugin: 'distribution'
+
+def sonatypeRepositoryUrl
+if (isReleaseBuild()) {
+    println '***********************RELEASE BUILD***********************'
+    sonatypeRepositoryUrl = hasProperty('RELEASE_REPOSITORY_URL') ? RELEASE_REPOSITORY_URL : ""
+} else {
+    println '***********************DEBUG BUILD***********************'
+    sonatypeRepositoryUrl = hasProperty('SNAPSHOT_REPOSITORY_URL') ? SNAPSHOT_REPOSITORY_URL  : ""
+}
+def isReleaseBuild() {
+    println '***********************check BUILD Type***********************'
+    def isRel = (android.defaultConfig.versionName.contains("SNAPSHOT") == false);
+    println "***********************isRelease=$isRel************************"
+    return isRel;
+}
+def getRepositoryUsername() {
+    return hasProperty('NEXUS_USERNAME') ? NEXUS_USERNAME : ''
+}
+def getRepositoryPassword() {
+    return hasProperty('NEXUS_PASSWORD') ? NEXUS_PASSWORD : ''
+}
+
+afterEvaluate { project ->
+    //zip打包全部apk文件并上传到nexus（目前打包全部上传。可改为[publishNonDefault true]每次生成一个apk自动上传，channel时整个打包+production上传）。
+    distributions {
+        main {
+            //baseName = 'someName'
+            contents {
+                from  'build/outputs/apk'
+            }
+        }
+    }
+    distZip.dependsOn(getTasksByName("assembleRelease", true))
+    distTar.dependsOn(getTasksByName("assembleRelease", true))
+
+    uploadArchives {
+        repositories {
+            mavenDeployer {
+                beforeDeployment { MavenDeployment deployment -> signing.signPom(deployment) }
+
+                repository(url: sonatypeRepositoryUrl) {
+                    authentication(userName: getRepositoryUsername(), password: getRepositoryPassword())
+                }
+
+                pom.project {
+                    name POM_NAME
+                    packaging POM_PACKAGING
+                    description POM_DESCRIPTION
+                    url POM_URL
+
+                    groupId  POM_GROUP
+                    artifactId  POM_ARTIFACT_ID
+                    version android.defaultConfig.versionName
+
+                    /*scm {
+                        url POM_SCM_URL
+                        connection POM_SCM_CONNECTION
+                        developerConnection POM_SCM_DEV_CONNECTION
+                    }*/
+                }
+            }
+        }
+    }
+
+    signing {
+        required { isReleaseBuild() && gradle.taskGraph.hasTask("uploadArchives") }
+//        sign android.signingConfigs.release
+    }
+
+/*    task androidJavadocs(type: Javadoc) {
+        source = android.sourceSets.main.java.srcDirs
+        classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
+    }*/
+
+/*    task androidJavadocsJar(type: Jar, dependsOn: androidJavadocs) {
+        classifier = 'javadoc'
+        from androidJavadocs.destinationDir
+    }*/
+
+/*    task androidSourcesJar(type: Jar) {
+        classifier = 'sources'
+        from android.sourceSets.main.java.srcDirs
+    }*/
+
+    // make sure the release builds are made before we try to upload them.
+    uploadArchives.dependsOn(getTasksByName("distZip", true))
+
+    /*ttask zipArtifact(dependsOn:getTasksByName("assembleRelease", true), type: Zip) {
+        from outputs.file
+        into(project.name + '-' + project.version)
+    }*/
+    /*artifacts {
+        *//*archives zipArtifact*//*
+    }*/
+}
+
+// create an archive class that known how to handle apk files.
+// apk files are just renamed jars.
+class Apk extends Jar {
+    def String getExtension() {
+        return 'zip'
+    }
+}

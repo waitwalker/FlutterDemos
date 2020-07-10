@@ -1,0 +1,20 @@
+//服务器	001
+fuwuqi
+//应用宝	002
+yingyongbao
+//UC(pp助手安卓开放平台)    003
+uc
+//360手机助手	004
+360
+//百度移动应用---百度助手	005
+baidu
+//小米商店	006
+xiaomi
+//华为	007
+huawei
+//乐商店（联想开放平台）	008
+leshang
+//oppo 009
+oppo
+//vivo 010
+vivo
