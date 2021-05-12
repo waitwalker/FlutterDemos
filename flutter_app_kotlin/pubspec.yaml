@@ -1,0 +1,285 @@
+name: online_school
+description: online_school flutter
+
+version: 1.0.0+1
+
+publish_to: none
+
+environment:
+  sdk: ">=2.10.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.2
+
+  # 微信 SDK
+  fluwx: ^3.4.2
+
+  flutter_advanced_segment: ^2.0.1+1
+  # 屏幕方向
+  orientation: ^1.3.0
+
+  # 滴滴 apm工具 现在路由有bug 先暂停使用
+  #dokit: ^0.2.5
+
+  # 系统分享插件
+  share_extend: ^2.0.0
+
+  # 字体icon
+  font_awesome_flutter: ^9.0.0
+
+  # 保存图片到相册
+  image_gallery_saver: ^1.6.9
+
+  # json格式
+  json_annotation: ^4.0.1
+
+  # 轻量存储
+  shared_preferences: ^2.0.5
+
+  # 汉字转拼音
+  lpinyin: ^2.0.1
+
+  # 获取文件系统存储路径
+  path_provider: ^2.0.1
+
+  # 动画库 需要去flare网站生成动画&导出 暂时没有引用到该库
+  flare_flutter: ^3.0.0
+
+  # 图片的加载写入 要和系统提供的显示库区别
+  image: ^3.0.2
+
+  # toast 弹框
+  fluttertoast: ^8.0.3
+
+  # 图片压缩
+  flutter_image_compress: ^1.0.0
+  flutter_native_image: ^0.0.6
+
+  # 获取图片 size(width & height)
+  image_size_getter: ^1.0.0
+  # 加载圈
+  flutter_easyloading: ^3.0.0
+  # 日志输出
+  logging: ^1.0.1
+  # 日志信息输出
+  logger: ^1.0.0
+  # 网络连接状态
+  connectivity: ^3.0.3
+  # 响应式
+  flutter_redux: ^0.8.2
+  # 全局事件总线
+  event_bus:  ^2.0.0
+  #常用加载动画
+  flutter_spinkit: ^5.0.0
+  # lottie 动画加载工具
+  lottie: ^1.0.1
+  # 刷新控件
+  flutter_easyrefresh: ^2.2.1
+  # 相机&相册
+  image_picker: ^0.7.4
+  # 图片裁剪
+  image_cropper: ^1.4.0
+  # 获取权限
+  permission_handler: ^6.1.3
+  # 获取应用信息
+  package_info: ^2.0.0
+  # 获取设备信息
+  device_info: ^2.0.0
+  # 国际化
+  flutter_localizations:
+    sdk: flutter
+  intl_translation:
+    git:
+      url: https://github.com/waitwalker/intl_translation.git
+      ref: 'main'
+
+  # 列表式加载占位
+  shimmer: ^2.0.0
+
+  # webview 设置ua
+  fk_user_agent: ^2.0.1
+
+  # 贝塞尔曲线
+  path_drawing: ^0.5.0
+  # svg 加载工具
+  flutter_svg: ^0.21.0+1
+  # 日期格式化
+  date_format: ^2.0.2
+
+  # 日历控件
+  table_calendar: ^3.0.0
+  # 大图预览
+  photo_view: ^0.11.1
+  # 网络请求库
+  http: ^0.13.1
+
+  # 下拉菜单
+  gzx_dropdown_menu: ^3.1.0
+
+  # 下拉刷新
+  pull_to_refresh: ^1.6.5
+
+  # 打开文件
+  open_file: ^3.1.0
+
+  # 网络请求库
+  dio: ^4.0.0
+
+  url_launcher: ^6.0.3
+
+  #日期选择器 已适配 null safety
+  #  flutter_datetime_picker: ^1.5.0
+  flutter_datetime_picker:
+    git:
+      url: https://github.com/AlexHartford/flutter_datetime_picker.git
+      ref: 'master'
+
+  # pdf预览 已适配 null safety
+  pdf_viewer_plugin:
+    git:
+      url: https://github.com/waitwalker/pdf_viewer_plugin.git
+      ref: 'main'
+
+  # 播放器皮肤 已适配 null safety
+  chewie:
+    git:
+      url: https://github.com/waitwalker/chewie_flutter_2.git
+      ref: 'main'
+
+  # fork 使用官方 已适配 null safety
+  jpush_flutter:
+    git:
+      url: https://github.com/waitwalker/jpush_flutter_2.git
+      ref: 'main'
+
+  # 获取渠道 已适配 null safety
+  package_channels:
+    git:
+      url: https://github.com/waitwalker/package_channels.git
+      ref: 'master'
+
+  # 友盟统计 自己封装 已适配 null safety
+  umeng_plugin:
+    git:
+      url: https://github.com/waitwalker/umeng_plugin.git
+      ref: 'master'
+
+  # 明文保存密码修复 已适配 null safety
+  webview_flutter:
+    git:
+      url: https://github.com/waitwalker/webview_flutter.git
+      ref: 'master'
+
+  # 视频 已适配 null safety
+  videoplayer:
+    git:
+      url: https://github.com/waitwalker/video_player_flutter_2.git
+      ref: 'main'
+
+  # 已经fork最新版本 明文保存密码修复 已适配 null safety
+  flutter_webview_plugin:
+    git:
+      url: https://github.com/waitwalker/flutter_webview_plugin.git
+      ref: 'master'
+
+
+
+
+
+  # ********************* common app ***********************
+  # ********************* common app ***********************
+  # 生成二维码
+  qr_flutter: ^4.0.0
+
+  # 列表左划右划删除
+  flutter_slidable: ^0.6.0
+
+  # 加密解密
+  cryptography: ^2.0.1
+
+  # 角标
+  badges: ^2.0.0-nullsafety.1
+
+  # 3D transition效果
+  #cube_transition: ^1.0.2
+
+  # 图片多选
+  #  multi_image_picker: ^4.8.0
+
+  # 原点边框
+  dotted_border: ^2.0.0
+
+  # 获取点击位置
+  positioned_tap_detector_2: ^1.0.0
+
+  # 获取通知权限
+  notification_permissions: ^0.5.0
+
+  # 图片处理 缓存&错误&占位等功能
+  octo_image: ^1.0.0
+  cached_network_image: ^3.0.0
+  rflutter_alert: ^2.0.2
+
+  # 屏幕长亮 不息屏
+  wakelock: ^0.5.0+2
+  # ********************* common app ***********************
+  # ********************* common app ***********************
+
+
+  ###################### 暂时没有升级,因为没法升级或者已经最新 2020之前库 ########################
+  ###################### 暂时没有升级,因为没法升级或者已经最新 2020之前库 ########################
+  # 加密 暂时未升级
+  encrypt: ^5.0.0
+
+  # 对象相等性比较
+  equatable: ^2.0.0
+  # 保存图片到相册 这个库和image_picker 冲突
+  # https://stackoverflow.com/questions/60925195/flutter-image-picker-crash
+  #image_picker_saver: ^0.3.0
+
+  # 唯一
+  flutter_udid: ^2.0.0
+  # 屏幕长亮
+  screen: ^0.0.5
+  # 响应式
+  rxdart: ^0.26.0
+  ###################### 暂时没有升级,因为没法升级或者已经最新 2020之前库 ########################
+  ###################### 暂时没有升级,因为没法升级或者已经最新 2020之前库 ########################
+
+
+  ###################### 暂时没有用到的库,但是很好 ########################
+  ###################### 暂时没有用到的库,但是很好 ########################
+  # Quiver is a set of utility libraries for Dart that makes using many Dart libraries easier and more convenient, or adds additional functionality.
+  quiver: ^3.0.0
+
+  # 转场动画
+  page_transition: ^2.0.1-nullsafety.0
+  ###################### 暂时没有用到的库,但是很好 ########################
+  ###################### 暂时没有用到的库,但是很好 ########################
+
+
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  build_runner: ^1.12.2
+  json_serializable: ^4.1.0
+
+
+#flutter:
+#  uses-material-design: true
+#
+#  assets:
+#    - static/images/2.0x/
+#    - static/images/3.0x/
+#    - static/images/
+#    - static/svgs/
+#    - assets/
+#
+#  fonts:
+#    - family: aliIconFont
+#      fonts:
+#        - asset: static/font/iconfont.ttf
+

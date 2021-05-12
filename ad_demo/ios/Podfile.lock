@@ -1,0 +1,35 @@
+PODS:
+  - Ads-CN (3.4.2.8):
+    - Ads-CN/BUAdSDK (= 3.4.2.8)
+  - Ads-CN/BUAdSDK (3.4.2.8):
+    - Ads-CN/BUFoundation
+    - Ads-CN/Domestic
+  - Ads-CN/BUFoundation (3.4.2.8)
+  - Ads-CN/Domestic (3.4.2.8)
+  - Flutter (1.0.0)
+  - flutter_unionad (0.0.1):
+    - Ads-CN
+    - Flutter
+
+DEPENDENCIES:
+  - Flutter (from `Flutter`)
+  - flutter_unionad (from `.symlinks/plugins/flutter_unionad/ios`)
+
+SPEC REPOS:
+  trunk:
+    - Ads-CN
+
+EXTERNAL SOURCES:
+  Flutter:
+    :path: Flutter
+  flutter_unionad:
+    :path: ".symlinks/plugins/flutter_unionad/ios"
+
+SPEC CHECKSUMS:
+  Ads-CN: 5055041248e93cd9b763023d32a12f3690d8b872
+  Flutter: 0e3d915762c693b495b44d77113d4970485de6ec
+  flutter_unionad: 68e48ff2d3aff66f8fc8c6e19ae1f587fa6402e9
+
+PODFILE CHECKSUM: 8e679eca47255a8ca8067c4c67aab20e64cb974d
+
+COCOAPODS: 1.10.1
