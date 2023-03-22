@@ -48,7 +48,7 @@ dependencies:
   encrypt: ^0.2.0+2
   # 加密
   tripledes: ^2.1.0
-  dio: ^3.0.10
+  dio: ^5.0.3
   flutter_webview_plugin: ^0.3.11
 
 dev_dependencies:
