@@ -125,7 +125,7 @@ dependencies:
   open_file: ^3.1.0
 
   # 网络请求库
-  dio: ^4.0.0
+  dio: ^5.0.3
 
   url_launcher: ^6.0.3
 
