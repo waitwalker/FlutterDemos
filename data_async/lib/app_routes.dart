@@ -1,0 +1,30 @@
+class AppRoutes {
+  static const launch = '/launch';
+  static const advertisement = '/advertisement';
+  static const login = '/login';
+  static const loginInput = '/login/input';
+  static const loginCode = '/login/code';
+  static const loginComplete = '/login/complete';
+  static const loginWelcome = '/login/welcome';
+  static const root = '/root';
+  static const home = '/home';
+  static const album = '/album';
+  static const playAlbum = '/playAlbum';
+  static const profile = '/profile';
+  static const connect = '/connect';
+  static const treasureBox = '/treasureBox';
+  static const my = '/my';
+  static const editPersonalInfo = '/my/editPersonalInfo';
+  static const setting = '/my/setting';
+  static const accountSetting = '/my/setting/account';
+  static const faq = '/my/setting/faq';
+  static const faqList = '/my/setting/faq/list';
+  static const faqDetail = '/my/setting/faq/detail';
+  static const follow = '/my/follow';
+  static const favourite = '/my/favourite';
+  static const message = '/my/message';
+  static const toy = '/my/toy';
+  static const remote = '/my/remote';
+  static const upgrade = '/my/upgrade';
+  static const ideas = '/my/ideas';
+}

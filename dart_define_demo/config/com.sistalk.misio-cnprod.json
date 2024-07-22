@@ -1,0 +1,21 @@
+{
+  "environment": "Prod",
+  "applicationId": "com.sistalk.misio.x",
+  "androidKeyAlias": "sistalk",
+  "androidKeyPassword": "sispwd919",
+  "androidStorePassword": "sispwd919",
+  "ios_bundle_identifier": "cn.sistalk.monster",
+  "umAppId": "56c7002fe0f55af0ea00196a",
+  "umPushSecret": "b05a8e66b90793c650879a0e2be19171",
+  "baiduAnalysis": "eadc1732a8",
+  "appPackage": "cn",
+  "appChannel": "android-cn-official",
+  "huanXinAppId": "09696815-4#mp-release",
+  "fcmSenderId": "841939770375",
+  "telecomAuthKey": "Tw6uBxfojWDLfSucsjfa3hB82AjfdKC8RTHUNeM4GGkadK/JuYnjINFkfN8RaKNxYa+lFcGXqxYAvJm5nW1wBxDgq2YMsQfLJGuruYhVxCIcHZagAqEIzgwYTd3A+ORHR1tTMwYNJhZv/FiBPqiDn0qEjUMcRSVwtWQ/+ljOu7CCayfVN4hik0hqyAZrvqmJIG0ODdeLXa7nhjKDgxMqxGUb8DDMv4Bb2yyhBaZSQIiryMxP1vYytr0TRO35571lSTt8zZ007mDN1KrOXEETQv7B9/tr+2WkvY6bs/4p+NwUVlBkJzZ2hA==",
+  "appName": "我的小怪兽",
+  "huanXinAppKey": "09696815-4#mp-release",
+  "appLinkHostPrefix": "applink",
+  "versionName": "5.5.10",
+  "versionCode": 20230410
+}
